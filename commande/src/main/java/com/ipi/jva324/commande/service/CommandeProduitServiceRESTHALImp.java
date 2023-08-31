@@ -21,7 +21,7 @@ public class CommandeProduitServiceRESTHALImp  implements CommandeProduitService
     @Override
     public ProduitEnStock getProduitEnStock(Long id) {
         // GET
-        ProduitEnStock p = springDataRestTemplate.getForObject(url + "api/data-rest/produitEnStock"+id, ProduitEnStock.class);
+        ProduitEnStock p = springDataRestTemplate.getForObject(url + "api/data-rest/produitEnStocks", ProduitEnStock.class);
         return p;
     }
 }
