@@ -1,12 +1,10 @@
 package com.ipi.jva324.stock.model;
 
-import com.ipi.jva324.stock.repository.ReceptionDeProduitRepository;
 import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity

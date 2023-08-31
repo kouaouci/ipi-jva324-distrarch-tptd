@@ -2,8 +2,8 @@ package com.ipi.jva324.commande.service;
 
 import com.ipi.jva324.commande.model.Commande;
 import com.ipi.jva324.commande.repository.CommandeRepository;
+
 import com.ipi.jva324.stock.model.ProduitEnStock;
-import com.ipi.jva324.stock.service.ProduitService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,8 +28,10 @@ public class CommandeService {
     @Autowired
     private CommandeRepository commandeRepository;
 
+
+
     @Autowired
-    private ProduitService produitService;
+    private CommandeProduitService commandeProduitService;
 
     /**
      * TODO better
@@ -57,7 +59,9 @@ public class CommandeService {
 
         // TODO get quantiteStockConnu, d'abord par RestTemplate
         logger.debug("createCommande produitId=" + commande.getProduitId());
-        ProduitEnStock produitEnStockFound = produitService.getProduit(commande.getProduitId());
+
+        ProduitEnStock produitEnStockFound = commandeProduitService.getProduitEnStock (
+                commande.getProduitId());
         long quantiteDisponible = (produitEnStockFound == null) ? 0 : produitEnStockFound.getQuantiteDisponible();
         commande.setQuantiteDisponibleStockConnu(quantiteDisponible);
 
@@ -71,7 +75,8 @@ public class CommandeService {
         }
 
         // vérifie que le stock est suffisant
-        ProduitEnStock produitEnStockFound = produitService.getProduit(commande.getProduitId());
+
+        ProduitEnStock produitEnStockFound = commandeProduitService.getProduitEnStock(commande.getProduitId());
         long quantiteDisponible = (produitEnStockFound == null) ? 0 : produitEnStockFound.getQuantiteDisponible();
         commande.setQuantiteDisponibleStockConnu(quantiteDisponible);
         if (commande.getQuantite() > quantiteDisponible) {

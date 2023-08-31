@@ -16,9 +16,11 @@
 
 	<modules>
 		<!-- module>discovery</module -->
+		<module>stock</module>
 		<module>commande</module>
 		<!-- module>stock</module>
 		<module>gateway</module -->
 	</modules>
+
 
 </project>

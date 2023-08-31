@@ -10,11 +10,11 @@ services:
       - '15432:5432'
     #volumes:
     #  - db:/var/lib/postgresql/data
-  discovery-service:
-    container_name: discovery-service
-    build: ./discovery
-    ports:
-      - "8761:8761"
+  #discovery-service:
+  #  container_name: discovery-service
+  #  build: ./discovery
+  #  ports:
+  #    - "8761:8761"
   commande-service:
     container_name: commande-service
     build: ./commande
@@ -24,3 +24,4 @@ services:
       - "8080:8080"
     depends_on:
       - db
+      -
